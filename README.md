@@ -7,5 +7,4 @@
   - Classes
 - Execution context
 - Prototypes
-- Mixins
-- Composables
+- Mixins & Composables in Vue
