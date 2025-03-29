@@ -72,7 +72,7 @@ Simples!
 - Setter
 - Method
 
-### Instance
+#### Instance
 Instance public variables can be declared anywhere in the class. It doesn't have to be only in the constructor. It can be in any function
 ```
 class MyClass{
@@ -86,7 +86,7 @@ class MyClass{
     }
 }
 ```
-### Method
+#### Method
 
 ```
 class MyClass{
