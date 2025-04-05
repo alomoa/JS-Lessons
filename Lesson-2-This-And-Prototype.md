@@ -12,7 +12,7 @@ Objects by default have the prototype Obect.protoype. Complex data structures (d
 ```
 const obj = {}
 
-obj => Object.prototype -> null
+obj -> Object.prototype -> null
 ```
 
 ### Own Property
