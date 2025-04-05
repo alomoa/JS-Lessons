@@ -55,12 +55,16 @@ obj.doSomethingArrow() // this = window
 
 
 ## Proxy class
-In JavaScript, the proxy class enables additional behaviour when object-specific operations are called on it.
+When console logging a reactive variable in Vue3, you often see the words like "proxy", "handler", and "target". You also have to open up some collapsables just to see the value of the damn variable 
+In JavaScript, the proxy class enables additional behaviour when object-specific operations are called on it. 
 Object-specific operations being things like:
 - Get (obj.prop)
 - Set (obj.prop = "new value")
 - HasOwnProperty (obj.hasOwnProperty())
 - ToString (obj.toString())
+
+The common use of proxies are to log access, validate data, sanitise data, and extend base functionality.
+[More examples](https://github.com/mikaelbr/awesome-es2015-proxy)
 
 To create a proxy you need an object and a handler object. The handler object will define all the object-specific operations that you want to add additional behaviours to. These are referred to as traps. 
 
