@@ -15,6 +15,8 @@ const obj = {}
 obj => Object.prototype -> null
 ```
 
+### Own Property
+We now know that objects have more than just the properties that were defined, they also inherit properties from their prototypes. Properties that are defines on the object itself are referred to as own property
 
 ## This (Execution context)
 
@@ -49,6 +51,55 @@ const obj = {
 
 obj.doSomething() // this = obj
 obj.doSomethingArrow() // this = window
+```
+
+
+## Proxy class
+In JavaScript, the proxy class enables additional behaviour when object-specific operations are called on it.
+Object-specific operations being things like:
+- Get (obj.prop)
+- Set (obj.prop = "new value")
+- HasOwnProperty (obj.hasOwnProperty())
+- ToString (obj.toString())
+
+To create a proxy you need an object and a handler object. The handler object will define all the object-specific operations that you want to add additional behaviours to. These are referred to as traps. 
+
+List of traps
+
+| Internal method    | Corresponding trap |
+| -------- | ------- |
+| [[GetPrototypeOf]]  | getPrototypeOf()    |
+| [[SetPrototypeOf]] | setPrototypeOf()     |
+| [[IsExtensible]]    | isExtensible()    |
+| [[PreventExtensions]]    | preventExtensions()    |
+| [[GetOwnProperty]]    | getOwnPropertyDescriptor()    |
+| [[DefineOwnProperty]]    | defineProperty()    |
+| [[HasProperty]]    | has()    |
+| [[Get]]    | get()    |
+| [[Set]]    | set()    |
+| [[Delete]]    | deleteProperty()    |
+| [[OwnPropertyKeys]]    | ownKeys()    |
 
 
 ```
+const obj = {
+  foo: "bar",
+  bar: "foo"
+}
+
+const handler = {
+  get(target, key){
+    console.log("getting", key, "from", target);
+    return target[key]
+  },
+  set(target, key, value){
+    console.log("setting", key, "with value", value, "in", target);
+    target[key] = value;
+  }
+}
+
+const proxy = new Proxy(obj, handler)
+console.log(proxy.foo) //calls the get in the handler
+proxy.foo = "baar" //calls the set
+```
+
